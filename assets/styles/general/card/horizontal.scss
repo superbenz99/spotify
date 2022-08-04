@@ -1,0 +1,14 @@
+.general-card-horizontal {
+  background: rgba(0, 0, 0, 0.7) !important;
+  &:hover {
+    .general-card-horizontal__button {
+      opacity: 1;
+    }
+    background: rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+.general-card-horizontal__button {
+  opacity: 0;
+  transition: opacity 0.5s;
+}

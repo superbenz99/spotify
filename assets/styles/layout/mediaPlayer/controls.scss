@@ -1,0 +1,27 @@
+.control__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.control__panel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.control__seekbar {
+  display: inline-flex;
+  width: 100%;
+}
+
+.control__seekbar-time {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.control__panel-item {
+  margin: 0 8px;
+}

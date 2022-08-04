@@ -1,0 +1,8 @@
+@import '~/assets/styles/layout/mediaPlayer/controls.scss';
+@import '~/assets/styles/layout/mediaPlayer/controlAppend.scss';
+@import '~/assets/styles/layout/mediaPlayer/nowPlaying.scss';
+
+.media-player__container {
+  display: flex;
+  width: 100%;
+}

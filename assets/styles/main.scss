@@ -1,0 +1,23 @@
+@import '~/assets/styles/general/main.scss';
+@import '~/assets/styles/layout/main.scss';
+@import '~/assets/styles/page/main.scss';
+
+.theme--dark {
+  .v-footer,
+  .v-navigation-drawer {
+    background-color: black !important;
+    .v-card {
+      background-color: black !important;
+    }
+  }
+}
+
+.v-main__wrap {
+  background-color: rgb(72, 32, 176);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%);
+  padding: 0 8px;
+}
+
+.f-12 {
+  font-size: 12px !important;
+}
