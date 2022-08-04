@@ -7,11 +7,9 @@
       :hasAppendIcon="true"
       :text="'Test User'"
     >
-    <template #menu-body>
-        <div>
-            test
-        </div>
-    </template>
+      <template #menu-body>
+        <div>test</div>
+      </template>
     </general-menu>
   </div>
 </template>

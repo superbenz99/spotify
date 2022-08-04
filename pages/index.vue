@@ -55,7 +55,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 
 @Component({})
-export default class RecentlyPlaylist extends Vue {
+export default class HomePage extends Vue {
   recentlyPlaylist = [
     {
       title: 'Liked Songs',
