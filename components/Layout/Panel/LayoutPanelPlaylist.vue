@@ -18,7 +18,7 @@ export default class LayoutPanelPlaylist extends Vue {
     },
     {
       text: 'Liked Songs',
-      icon: require('~/assets/svgs/layout/panel/heart.svg'),
+      icon: require('~/static/liked_songs.png'),
     },
   ]
   userPlaylists = [

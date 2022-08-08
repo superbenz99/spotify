@@ -1,5 +1,8 @@
 <template>
-  <v-card class="mx-auto col-12 pa-0 general-card-vertical">
+  <v-card
+    class="mx-auto col-12 pa-0 general-card-vertical cursor-pointer"
+    @click="$emit('onClickCard', true)"
+  >
     <v-list-item class="pa-0 d-block">
       <v-list-item-avatar tile size="100%" class="ma-0">
         <v-img :src="imagePath"></v-img>

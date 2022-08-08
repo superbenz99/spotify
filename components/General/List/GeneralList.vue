@@ -1,6 +1,11 @@
 <template>
   <v-list dense>
-    <v-list-item v-for="(item, i) in items" :key="i">
+    <v-list-item
+      v-for="(item, i) in items"
+      :key="i"
+      class="cursor-pointer"
+      @click="$emit('onClick', i)"
+    >
       <v-list-item-icon v-if="item.icon">
         <img :src="item.icon" />
       </v-list-item-icon>

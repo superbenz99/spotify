@@ -7,7 +7,7 @@
       :clipped-left="clipped"
       fixed
       app
-      color="transparent"
+      :color="bg"
       class="elevation-0"
     >
       <layout-header />
@@ -31,6 +31,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      bg: 'transparent',
       items: [
         {
           icon: 'mdi-apps',
@@ -48,6 +49,23 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js',
     }
+  },
+  mounted() {
+    window.onscroll = () => {
+      this.changeColor()
+    }
+  },
+  methods: {
+    changeColor() {
+      if (
+        document.body.scrollTop > 280 ||
+        document.documentElement.scrollTop > 280
+      ) {
+        this.bg = 'rgb(72, 32, 176)'
+      } else {
+        this.bg = 'transparent'
+      }
+    },
   },
 }
 </script>

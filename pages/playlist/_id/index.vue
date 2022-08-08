@@ -1,5 +1,7 @@
 <template>
-  <div>PlaylistPageById</div>
+  <div>
+    <playlist />
+  </div>
 </template>
 
 <script lang="ts">
