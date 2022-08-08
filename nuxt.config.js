@@ -43,7 +43,43 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+
+  auth: {
+    strategies: {
+      spotify: {
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: 'https://accounts.spotify.com/authorize',
+          token: 'https://accounts.spotify.com/api/token',
+          // logout: 'http://localhost:3000/logout',
+          userInfo: 'https://api.spotify.com/v1/me',
+        },
+        token: {
+          property: 'access_token',
+          type: 'Bearer',
+          maxAge: 1800,
+        },
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30,
+        },
+        responseType: 'token',
+        grantType: 'authorization_code',
+        redirectUri: 'http://localhost:3000',
+        logoutRedirectUri: '/',
+        clientId: '5d1dbdd190ae49f9af2c416537b6cf4c',
+        scope: [],
+        state: '',
+        codeChallengeMethod: '',
+        responseMode: '',
+        acrValues: '',
+        clientSecret: '7dea876ac2304dbd9db25543a898830a'
+        // autoLogout: false
+      },
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

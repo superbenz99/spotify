@@ -23,49 +23,50 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  name: 'DefaultLayout',
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      bg: 'transparent',
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
-    }
-  },
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator'
+@Component
+export default class DefaultLayout extends Vue {
+  clipped: boolean = false
+  drawer = false
+  fixed = false
+  bg = 'transparent'
+  items = [
+    {
+      icon: 'mdi-apps',
+      title: 'Welcome',
+      to: '/',
+    },
+    {
+      icon: 'mdi-chart-bubble',
+      title: 'Inspire',
+      to: '/inspire',
+    },
+  ]
+  miniVariant = false
+  right = true
+  rightDrawer = false
+  title = 'Vuetify.js'
+
+  get auth() {
+    return this.$auth
+  }
+
   mounted() {
     window.onscroll = () => {
       this.changeColor()
     }
-  },
-  methods: {
-    changeColor() {
-      if (
-        document.body.scrollTop > 280 ||
-        document.documentElement.scrollTop > 280
-      ) {
-        this.bg = 'rgb(72, 32, 176)'
-      } else {
-        this.bg = 'transparent'
-      }
-    },
-  },
+  }
+
+  changeColor() {
+    if (
+      document.body.scrollTop > 280 ||
+      document.documentElement.scrollTop > 280
+    ) {
+      this.bg = 'rgb(72, 32, 176)'
+    } else {
+      this.bg = 'transparent'
+    }
+  }
 }
 </script>

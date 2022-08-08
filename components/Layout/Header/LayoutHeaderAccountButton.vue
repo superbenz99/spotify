@@ -8,7 +8,7 @@
       :text="'Test User'"
     >
       <template #menu-body>
-        <div>test</div>
+        <div @click="onLogin()">Login</div>
       </template>
     </general-menu>
   </div>
@@ -18,5 +18,11 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 
 @Component({})
-export default class LayoutHeaderAccountButton extends Vue {}
+export default class LayoutHeaderAccountButton extends Vue {
+  async onLogin() {
+    const token = await this.$auth.loginWith('spotify')
+    console.log(token);
+    
+  }
+}
 </script>

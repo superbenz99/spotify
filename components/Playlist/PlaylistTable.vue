@@ -10,8 +10,11 @@
         <img :src="require('~/assets/svgs/page/playlist/clock.svg')" />
       </template>
       <template #item.liked="{ item, value }">
-        <img
+        <img v-if="value"
           :src="require('~/assets/svgs/layout/mediaPlayer/heart-active.svg')"
+        />
+         <img v-if="!value"
+          :src="require('~/assets/svgs/layout/mediaPlayer/heart.svg')"
         />
       </template>
       <template #item.title="{ item, value }">
@@ -109,7 +112,7 @@ export default class PagePlaylistTable extends Vue {
       imgCoverPath: require('~/static/moody.jpeg'),
       album: 'Frozen',
       dateAdd: '1 day ago',
-      liked: true,
+      liked: false,
       duration: '3:00',
     },
     {
