@@ -8,21 +8,27 @@
         <v-img :src="imagePath"></v-img>
       </v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title
-          class="font-weight-bold ml-5 d-flex justify-space-between"
-        >
-          {{ title }}
-          <v-card-actions
-            v-if="buttonIcon"
-            :class="{ 'general-card-horizontal__button': !displayButtonAlways }"
-          >
-            <general-button-fab
-              :iconPath="buttonIcon"
-              :color="buttonColor"
-              @onClick="$emit('onClickButton', true)"
-            />
-          </v-card-actions>
-        </v-list-item-title>
+        <v-row class="col-12">
+          <v-col cols="10">
+            <v-list-item-title class="font-weight-bold ml-5">
+              {{ title }}
+            </v-list-item-title>
+          </v-col>
+          <v-col cols="2">
+            <v-card-actions
+              v-if="buttonIcon"
+              :class="{
+                'general-card-horizontal__button': !displayButtonAlways,
+              }"
+            >
+              <general-button-fab
+                :iconPath="buttonIcon"
+                :color="buttonColor"
+                @onClick="$emit('onClickButton', true)"
+              />
+            </v-card-actions>
+          </v-col>
+        </v-row>
       </v-list-item-content>
     </v-list-item>
   </v-card>

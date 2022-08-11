@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex playlist-card__container">
-    <div class="mr-4">
+    <div>
       <v-img max-height="40" max-width="40" :src="imgCoverPath" />
     </div>
     <div>

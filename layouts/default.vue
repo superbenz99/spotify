@@ -48,10 +48,6 @@ export default class DefaultLayout extends Vue {
   rightDrawer = false
   title = 'Vuetify.js'
 
-  get auth() {
-    return this.$auth
-  }
-
   mounted() {
     window.onscroll = () => {
       this.changeColor()

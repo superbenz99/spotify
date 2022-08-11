@@ -5,10 +5,11 @@
       :iconPathAppend="require('~/assets/svgs/layout/header/dropdown.svg')"
       :hasPrependIcon="true"
       :hasAppendIcon="true"
-      :text="'Test User'"
+      :text="user"
     >
       <template #menu-body>
         <div @click="onLogin()">Login</div>
+        <div @click="onLogout()">Logout</div>
       </template>
     </general-menu>
   </div>
@@ -16,13 +17,21 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
+import UserModule from '~/store/user.module'
 
 @Component({})
 export default class LayoutHeaderAccountButton extends Vue {
-  async onLogin() {
-    const token = await this.$auth.loginWith('spotify')
-    console.log(token);
-    
+  onLogin() {
+    this.$auth.loginWith('spotify')
+  }
+
+  onLogout() {
+    this.$auth.logout()
+    this.$router.go(0)
+  }
+
+  get user() {
+    return this.$auth.user ? this.$auth.user.display_name : 'Login'
   }
 }
 </script>

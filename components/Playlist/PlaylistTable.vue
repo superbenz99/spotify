@@ -10,10 +10,12 @@
         <img :src="require('~/assets/svgs/page/playlist/clock.svg')" />
       </template>
       <template #item.liked="{ item, value }">
-        <img v-if="value"
+        <img
+          v-if="value"
           :src="require('~/assets/svgs/layout/mediaPlayer/heart-active.svg')"
         />
-         <img v-if="!value"
+        <img
+          v-if="!value"
           :src="require('~/assets/svgs/layout/mediaPlayer/heart.svg')"
         />
       </template>
@@ -29,133 +31,20 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 import { DataTableHeader } from 'vuetify'
 
 @Component({})
 export default class PagePlaylistTable extends Vue {
-  playlist = [
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: false,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-    {
-      order: 1,
-      title: 'Frozen Yogurt',
-      artist: 'Elsa',
-      imgCoverPath: require('~/static/moody.jpeg'),
-      album: 'Frozen',
-      dateAdd: '1 day ago',
-      liked: true,
-      duration: '3:00',
-    },
-  ]
+  @Prop({ required: true }) readonly playlist!: {
+    order: number
+    title: string
+    artist: string
+    imgCoverPath: string
+    album: string
+    liked: boolean
+    duration: string
+  }[]
 
   headers: DataTableHeader[] = [
     {
@@ -171,11 +60,6 @@ export default class PagePlaylistTable extends Vue {
     {
       text: 'ALBUM',
       value: 'album',
-      sortable: false,
-    },
-    {
-      text: 'DATE ADD',
-      value: 'dateAdd',
       sortable: false,
     },
     {

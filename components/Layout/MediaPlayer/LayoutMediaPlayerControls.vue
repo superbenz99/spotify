@@ -7,10 +7,10 @@
       <div class="control__panel--item">
         <img :src="require('~/assets/svgs/layout/mediaPlayer/previous.svg')" />
       </div>
-      <div
-        class="control__panel--item control-append__item"
-        @click="onPlay()"
-      >
+      <div class="control__panel--item control-append__item" @click="onPlay()">
+        <audio ref="player">
+          <source :src="audioSrc" />
+        </audio>
         <img :src="playingIcon" />
       </div>
       <div class="control__panel--item">
@@ -28,10 +28,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 
 @Component({})
 export default class LayoutMediaPlayerControls extends Vue {
+  @Prop({ required: true }) readonly audioSrc!: string
   playing = false
 
   get playingIcon() {
@@ -43,6 +44,11 @@ export default class LayoutMediaPlayerControls extends Vue {
 
   onPlay() {
     this.playing = !this.playing
+    if (this.playing) {
+      this.$refs.player && (this.$refs.player as any).play()
+    } else {
+      this.$refs.player && (this.$refs.player as any).pause()
+    }
   }
 }
 </script>

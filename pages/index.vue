@@ -59,47 +59,30 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
+import * as DashboardService from '~/services/dashboard/dashboard.service'
+import { AlbumsInterface } from '~/types/dashboard/dashboard'
+import UserModule from '~/store/user.module'
 
 @Component({})
 export default class HomePage extends Vue {
-  recentlyPlaylist = [
-    {
-      title: 'Liked Songs',
-      imagePath: require('~/static/liked_songs.png'),
-      click: false,
-      id: 1,
-    },
-    {
-      title: 'Hot Hits Thailand',
-      imagePath: require('~/static/hot_hits.jpeg'),
-      click: false,
-      id: 2,
-    },
-    {
-      title: 'ฮิตติดกระแส',
-      imagePath: require('~/static/hit.jpeg'),
-      click: false,
-      id: 3,
-    },
-    {
-      title: 'K-Pop Now',
-      imagePath: require('~/static/hit.jpeg'),
-      click: false,
-      id: 4,
-    },
-    {
-      title: 'T-Pop Now',
-      imagePath: require('~/static/hit.jpeg'),
-      click: false,
-      id: 5,
-    },
-    {
-      title: 'Cafe Now',
-      imagePath: require('~/static/hit.jpeg'),
-      click: false,
-      id: 6,
-    },
-  ]
+  recentlyPlaylist: {
+    title: string
+    imagePath: string
+    id: string
+    click: boolean
+  }[] = []
+  created() {
+    DashboardService.getNewReleases().then((res: AlbumsInterface) => {
+      res.albums.items.map((m) => {
+        this.recentlyPlaylist.push({
+          title: m.name,
+          imagePath: m.images[0].url,
+          id: m.id,
+          click: false,
+        })
+      })
+    })
+  }
 
   suggestionPlaylist = [
     {
@@ -159,6 +142,15 @@ export default class HomePage extends Vue {
     this.$router.push({
       path: `/playlist/${list[index].id}`,
     })
+  }
+
+  mounted() {
+    if (!this.$auth.user) {
+      this.$auth.fetchUser()
+    }
+    const user = this.$auth.user
+    this.$auth.setUser(user)
+    UserModule.setUser(user)
   }
 }
 </script>
